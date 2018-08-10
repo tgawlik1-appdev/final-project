@@ -1,0 +1,49 @@
+<h1>
+  Meeting #<%= @meeting.id %> details
+</h1>
+
+<a href="/meetings/<%= @meeting.id %>/edit">
+  Edit meeting
+</a>
+
+<hr>
+
+<dl>
+  <dt>
+    First participant
+  </dt>
+  <dd>
+    <%= @meeting.first_participant %>
+  </dd>
+
+  <dt>
+    Second participant
+  </dt>
+  <dd>
+    <%= @meeting.second_participant %>
+  </dd>
+
+  <dt>
+    Created at
+  </dt>
+  <dd>
+    <%= time_ago_in_words(@meeting.created_at) %> ago
+  </dd>
+
+  <dt>
+    Updated at
+  </dt>
+  <dd>
+    <%= time_ago_in_words(@meeting.updated_at) %> ago
+  </dd>
+</dl>
+
+<a href="/delete_meeting/<%= @meeting.id %>">
+  Delete meeting
+</a>
+
+<hr>
+
+<a href="/meetings">
+  Go back
+</a>

@@ -1,15 +1,15 @@
-<h2>Sign up</h2>
+<h2>hello</h2>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= devise_error_messages! %>
 
-  <div class="field">
-    <%= f.label :first_name %><br />
-    <%= f.email_field :first_name, autofocus: true, autocomplete: "First Name" %>
-  </div>
+  <div class="field">-->
+    <%= f.label :first_name %><br />-->
+    <%= f.text_field :first_name, autofocus: true, autocomplete: "First Name" %>-->
+  --</div>-->
   <div class="field">
     <%= f.label :last_name %><br />
-    <%= f.email_field :last_name, autofocus: true, autocomplete: "Last Name" %>
+    <%= f.text_field :last_name, autofocus: true, autocomplete: "Last Name" %>
   </div>
 
   <div class="field">
@@ -19,7 +19,7 @@
   
   <div class="field">
     <%= f.label :network_affiliation %><br />
-    <%= f.network_affiliation_field :network_affiliation, autofocus: true, autocomplete: "Network Affiliation" %>
+    <%= f.text_field :network_affiliation, autofocus: true, autocomplete: "Network Affiliation" %>
   </div>
 
   <div class="field">

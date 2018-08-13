@@ -10,4 +10,12 @@ class UsersController < ApplicationController
 
     render("users/show.html.erb")
   end
+  def participate
+    @user = User.find(params.fetch("id_to_update"))
+    
+    @user.yes_participating = params.fetch("yes_participating")
+    
+    redirect_to("/users/#{@user.id}", :notice => "You're in for today!")
+  end
+  
 end

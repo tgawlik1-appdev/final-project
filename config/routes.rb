@@ -3,8 +3,11 @@ Rails.application.routes.draw do
   
   root "users#index"
   
+  devise_for :users
+  
   get("/users", { :controller => "users", :action => "index" })
   get("/users/:id_to_display", { :controller => "users", :action => "show" })
+  post("/update_user/:id_to_update", { :controller => "users", :action => "participate"})
   
   
   # CREATE
@@ -24,7 +27,7 @@ Rails.application.routes.draw do
 
   #------------------------------
 
-  devise_for :users
+
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

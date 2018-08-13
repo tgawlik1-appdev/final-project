@@ -10,6 +10,23 @@
 
 <dl>
   <dt>
+    Participating
+  </dt>
+  <dd>
+    <% if @user.yes_participating == nil || false %>
+      <form action="/update_user/<%=current_user.id%>" method="post">
+        <input type="hidden" name="yes_participating" value="<%=@user.yes_participating%>">
+        <button class="btn btn-primary">
+          I'm in for Today!
+        </button>
+      </form>
+    <%else%>
+      <a>
+        You're Already Signed Up for Today!
+      </a>
+    <% end %>
+  </dd>
+  <dt>
     User ID
   </dt>
   <dd>
@@ -54,18 +71,18 @@
     User Meetings
   </div>
   <ul>
-    <% User.where(["first_participant = ? or second_participant = ?", current_user.id, current_user.id]).each do |meeting| %>
-    <li>
-      <a href = "/meetings/<%=meeting.id%>" >
-        <a <%=meeting.first_participant%>>
-        <div>
-        <%=.caption%>
-        </div>
-      </a>
+  <!--  <%# User.where(["first_participant = ? or second_participant = ?", current_user.id, current_user.id]).each do |meeting| %>-->
+  <!--  <li>-->
+  <!--    <a href = "/meetings/<%#=meeting.id%>" >-->
+  <!--      <a <%#=meeting.first_participant%>>-->
+  <!--      <div>-->
+  <!--   
+  <!--      </div>-->
+  <!--    </a>-->
       
-    </li>
-    <% end %>
-  </ul>
+  <!--  </li>-->
+  <!--  <%# end %>-->
+  <!--</ul>-->
 
 <hr>
 

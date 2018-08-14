@@ -13,7 +13,7 @@ class Meeting < ApplicationRecord
     belongs_to :participant1, :class_name => "User", :foreign_key => "first_participant"
     belongs_to :participant2, :class_name => "User", :foreign_key => "second_participant"
     validates :first_participant, :presence => { :message => "Must have First Participant" }
-    validates :first_participant, :uniqueness => true
+    validates :first_participant, uniqueness: {scope: :second_participant, :message => "These people have already met" }
     validates :second_participant, :presence => { :message => "Must have Second Participant" }
-    validates :second_participant, :uniqueness => true
+    validates :second_participant, uniqueness: {scope: :first_participant, :message => "These people have already met" }
 end

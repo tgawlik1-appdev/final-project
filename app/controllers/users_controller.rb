@@ -13,9 +13,13 @@ class UsersController < ApplicationController
   def participate
     @user = User.find(params.fetch("id_to_update"))
     
-    @user.yes_participating = params.fetch("yes_participating")
-    
-    redirect_to("/users/#{@user.id}", :notice => "You're in for today!")
+    if @user.yes_participating == false || nil
+      @user.yes_participating = true
+    else
+      @user.yes_participating = false
+    end
+    @user.save
+    redirect_to("/users/#{@user.id}", :notice => "Change Saved!")
   end
   
 end

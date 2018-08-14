@@ -10,19 +10,16 @@
 
 <dl>
   <dt>
-    Participating
+    Participating?
   </dt>
   <dd>
-    <% if @user.yes_participating == nil || false %>
-      <form action="/update_user/<%=current_user.id%>" method="post">
-        <input type="hidden" name="yes_participating" value="<%=@user.yes_participating%>">
-        <button class="btn btn-primary">
+    <% if @user.yes_participating == nil || @user.yes_participating == false %>
+      <a href="/update_user/<%=current_user.id%>" class="btn btn-primary">
           I'm in for Today!
-        </button>
-      </form>
+      </a>
     <%else%>
-      <a>
-        You're Already Signed Up for Today!
+      <a href="/update_user/<%=current_user.id%>" class="btn btn-primary">
+        You're Already Signed Up for Today! (Unsign up)
       </a>
     <% end %>
   </dd>

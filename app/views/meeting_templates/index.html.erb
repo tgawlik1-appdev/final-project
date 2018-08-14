@@ -35,32 +35,35 @@
   </tr>
 
   <% @meetings.each do |meeting| %>
-  <tr>
-    <td>
-      <%= meeting.id %>
-    </td>
-
-    <td>
-      <%= meeting.first_participant %>
-    </td>
-
-    <td>
-      <%= meeting.second_participant %>
-    </td>
-
-    <td>
-      <%= time_ago_in_words(meeting.created_at) %> ago
-    </td>
-
-    <td>
-      <%= time_ago_in_words(meeting.updated_at) %> ago
-    </td>
-
-    <td>
-      <a href="/meetings/<%= meeting.id %>">
-        Show details
-      </a>
-    </td>
-  </tr>
+    <% if meeting.in?(current_user.meetings1) || meeting.in?(current_user.meetings2) %>
+  
+    <tr>
+      <td>
+        <%= meeting.id %>
+      </td>
+  
+      <td>
+        <%= meeting.first_participant %>
+      </td>
+  
+      <td>
+        <%= meeting.second_participant %>
+      </td>
+  
+      <td>
+        <%= time_ago_in_words(meeting.created_at) %> ago
+      </td>
+  
+      <td>
+        <%= time_ago_in_words(meeting.updated_at) %> ago
+      </td>
+      
+      <td>
+        <a href="/meetings/<%= meeting.id %>">
+          Show details
+        </a>
+      </td>
+    </tr>
+    <% end %>
   <% end %>
 </table>

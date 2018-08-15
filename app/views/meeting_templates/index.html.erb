@@ -2,32 +2,27 @@
   My Meetings
 </h1>
 
-<a href="/meetings/new">
-  Add a new meeting
-</a>
 
 <hr>
 
 <table class="table">
   <tr>
     <th>
-      ID
-    </th>
-
-    <th>
       First participant Name
+    </th>
+    <th>
+      First participant Email
     </th>
 
     <th>
       Second participant Name
     </th>
-
+    <th>
+      Second participant Email
+    </th>
     <th>
       Meeting Date
-    </th>
 
-
-    <th>
     </th>
   </tr>
 
@@ -36,27 +31,23 @@
   
     <tr>
       <td>
-        <%= meeting.id %>
+        <%= meeting.first_participant_name %>
+      </td>
+      <td>
+        <%= meeting.first_participant_email %>
       </td>
   
       <td>
-        <%= meeting.first_participant %>
+        <%= meeting.second_participant_name %>
       </td>
-  
-      <td>
-        <%= meeting.second_participant %>
+       <td>
+        <%= meeting.second_participant_email %>
       </td>
-  
       <td>
-        <%= (meeting.meeting_date) %>
+        <%= meeting.meeting_date %>
       </td>
   
       
-      <td>
-        <a href="/meetings/<%= meeting.id %>">
-          Show details
-        </a>
-      </td>
     </tr>
     <% end %>
   <% end %>

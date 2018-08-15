@@ -14,7 +14,7 @@
             <li class="nav-item">
               <a class="nav-link" href="/meetings">
                 <i class="fas fa-users"></i>
-                <span class="hidden-sm">All Meetings</span></a>
+                <span class="hidden-sm">My Meetings</span></a>
             </li>
             <% if current_user != nil %>
               <li class="nav-item">
@@ -48,7 +48,7 @@
         <li class="nav-item">
           <a href="/users/edit" class="nav-link">
 
-            <%= current_user.email%>
+            Edit Profile <%=current_user.first_name%>
 
           </a>
         </li>

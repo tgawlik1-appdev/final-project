@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   # Routes for the Meeting resource:
   
-  root "users#index"
+  root "users#show"
   
   devise_for :users
   

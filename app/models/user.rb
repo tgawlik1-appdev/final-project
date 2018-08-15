@@ -19,6 +19,7 @@
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
 #  yes_participating      :boolean
+#  phone_number           :string
 #
 # Indexes
 #

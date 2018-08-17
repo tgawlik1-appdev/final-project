@@ -1,3 +1,6 @@
+
+
+
 <h2>Sign Up for Prandium!</h2>
 <h3> How does it work?
       You provide some information, including a linkedin network and we match you up with another random person in the same network for lunch when you designate you're in!</h3>
@@ -18,18 +21,23 @@
     <%= f.label :email %><br />
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
   </div>
+  <!--<div class="field">-->
+  <!--  <%#= f.label :email %><br />-->
+  <!--  <%#= f.email_field :email, autofocus: true, autocomplete: "email" %>-->
+  <!--</div>-->
+  
+  <!--<div class="field">-->
+  <!--  <%#= f.label :network_affiliation %><br />-->
+  <!--  <%#= f.text_field :network_affiliation, autofocus: true, autocomplete: "Network Affiliation" %>-->
+  <!--</div>-->
   <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+    <%= f.label :network_affiliation %><br />
+    <%= f.text_field :network_affiliation, autofocus: true, autocomplete: "Network Affiliation" %>
   </div>
   
   <div class="field">
-    <%= f.label :network_affiliation %><br />
-    <%= f.text_field :network_affiliation, autofocus: true, autocomplete: "Network Affiliation" %>
-  </div>
-    <div class="field">
-    <%= f.label :network_affiliation %><br />
-    <%= f.text_field :network_affiliation, autofocus: true, autocomplete: "Network Affiliation" %>
+    <%= f.label :full_daytime_address %><br />
+    <%= f.text_field :full_daytime_address, autofocus: true, autocomplete: "full_daytime_address" %>
   </div>
 
   <div class="field">

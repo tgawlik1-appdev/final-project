@@ -2,9 +2,5 @@ desc "Reset Participating"
 
 task :reset => :environment do
     users = User.all
-    users.each do |user|
-        if user.yes_participating == true
-            user.yes_participating = false
-        end
-    end
+    users.each { |user| user.update_attributes(:yes_participating => true)}
 end

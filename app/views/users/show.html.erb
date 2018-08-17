@@ -1,9 +1,9 @@
 <h1>
-  User #<%= @user.id %> details
+  Hi <%= @user.first_name %>! 
 </h1>
 
 <a href="/users/edit">
-  Edit user
+  Edit My Profile
 </a>
 
 <hr>
@@ -22,12 +22,6 @@
         You're Already Signed Up for Today! (Unsign up)
       </a>
     <% end %>
-  </dd>
-  <dt>
-    User ID
-  </dt>
-  <dd>
-    <%= @user.id %>
   </dd>
   <dt>
     First Name
@@ -52,6 +46,12 @@
   </dt>
   <dd>
     <%= @user.network_affiliation %>
+  </dd>
+    <dt>
+    Full Daytime Address
+  </dt>
+  <dd>
+    <%= @user.full_daytime_address %>
   </dd>
 
 </dl>

@@ -22,4 +22,21 @@ class UsersController < ApplicationController
     redirect_to("/users/#{@user.id}", :notice => "Change Saved!")
   end
   
+  
+  
+  def linkedin_callback
+    client = LinkedIn::Client.new('868dhmyht39gex', 'oXxUOPQerpyjvU11') 
+    code = params.fetch("code")
+    access_code = client.authorize_from_request(code, :redirect_uri => 'https://prandium-app-tgawlik.c9users.io/callback')
+    client.authorize_from_access(access_code)
+    p("====================")
+    p(client.profile)
+    
+    @users = User.all
+    
+
+    render("users/index.html.erb")
+  end
+  
+  
 end

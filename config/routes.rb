@@ -5,11 +5,12 @@ Rails.application.routes.draw do
   
   devise_for :users
   
-  get("/callback", { :controller => "users", :action => "linkedin_callback" })
+  #get("/callback", { :controller => "users", :action => "linkedin_callback" })
   
   get("/users", { :controller => "users", :action => "index" })
   get("/users/:id_to_display", { :controller => "users", :action => "show" })
   get("/update_user/:id_to_update", { :controller => "users", :action => "participate"})
+  #get("/update_user/:id_to_update", { :controller => "users", :action => "participate"})
   
   
   # CREATE

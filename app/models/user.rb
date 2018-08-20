@@ -21,6 +21,8 @@
 #  yes_participating      :boolean
 #  phone_number           :string
 #  full_daytime_address   :string
+#  latitude               :float
+#  longitude              :float
 #
 # Indexes
 #
@@ -40,6 +42,11 @@ class User < ApplicationRecord
   has_many :participant1s, :through => :meetings2, :source => :participant1
   
   #validates :first_name, :presence => true
+  #validates :last_name, :presence => true
+  #validates :email, :presence => true
+  #validates :phone_number, :presence => true
+  #validates :network_affiliation, :presence => true
+  #validates :full_daytime_address, :presence => true
   #validates :email, :uniqueness => true
   
   

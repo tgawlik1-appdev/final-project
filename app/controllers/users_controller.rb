@@ -1,3 +1,4 @@
+
 class UsersController < ApplicationController
   def index
     @users = User.all
@@ -7,7 +8,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(current_user.id)
-
+    @time = Time.new
     render("users/show.html.erb")
   end
   def participate
@@ -22,21 +23,35 @@ class UsersController < ApplicationController
     redirect_to("/users/#{@user.id}", :notice => "Change Saved!")
   end
   
-  
-  
-  def linkedin_callback
-    client = LinkedIn::Client.new('868dhmyht39gex', 'oXxUOPQerpyjvU11') 
-    code = params.fetch("code")
-    access_code = client.authorize_from_request(code, :redirect_uri => 'https://prandium-app-tgawlik.c9users.io/callback')
-    client.authorize_from_access(access_code)
-    p("====================")
-    p(client.profile)
+  # def street_to_coords
+  #   @street_address = params.fetch("full_daytime_address")
+  #   url_safe_street_address = URI.encode(@street_address)
+
+  #   raw_data = "https://maps.googleapis.com/maps/api/geocode/json?address=#{url_safe_street_address}"
+  #   parsed_data = JSON.parse(open(raw_data).read)
     
-    @users = User.all
+  #   @latitude = parsed_data.dig("results", 0, "geometry", "location", "lat")
+    
+  #   @longitude = parsed_data.dig("results", 0, "geometry", "location", "lng")
+
+  #   render("geocoding/street_to_coords.html.erb")
+  # end
+  
+  
+  # def linkedin_callback
+  #   p 'HIT THE CALLBACK ROUTE'
+  #   client = LinkedIn::Client.new('868dhmyht39gex', 'oXxUOPQerpyjvU11') 
+  #   code = params.fetch("code")
+  #   access_code = client.authorize_from_request(code, :redirect_uri => 'https://prandium-app-tgawlik.c9users.io/callback')
+  #   client.authorize_from_access(access_code)
+  #   p("====================")
+  #   p(client.profile)
+    
+  #   @users = User.all
     
 
-    render("users/index.html.erb")
-  end
+  #   render("users/index.html.erb")
+  # end
   
   
 end

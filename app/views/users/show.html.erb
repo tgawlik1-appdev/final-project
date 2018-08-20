@@ -11,15 +11,20 @@
 <dl>
   <dt>
     Participating?
+    <div>Please indicate before 10 AM Local time.</div>
   </dt>
   <dd>
-    <% if @user.yes_participating == nil || @user.yes_participating == false %>
+    <% if @user.yes_participating == nil || @user.yes_participating == false && @time.hour < 15 && @time.hour > 5  %>
       <a href="/update_user/<%=current_user.id%>" class="btn btn-primary">
-          I'm in for Today!
+          I'm in for Today! (<%= Date.today %>)
+      </a>
+    <% elsif @user.yes_participating == nil || @user.yes_participating == false && @time.hour > 15 || @time.hour < 4  %>
+      <a >
+          Today's meeting is over! Please come back tomorrow (<%= Date.tomorrow %>)
       </a>
     <%else%>
       <a href="/update_user/<%=current_user.id%>" class="btn btn-primary">
-        You're Already Signed Up for Today! (Unsign up)
+        You're Already Signed Up for Today! (<%= Date.today%>) (Unsign up)
       </a>
     <% end %>
   </dd>
@@ -62,25 +67,52 @@
 <a href="/delete_user/<%= @user.id %>">
   Delete user
 </a>
-
 <div class="card mt-4">
   <div class="card-header">
-    User Meetings
+    Today's Meeting
   </div>
-  <ul>
-  <!--  <%# User.where(["first_participant = ? or second_participant = ?", current_user.id, current_user.id]).each do |meeting| %>-->
-  <!--  <li>-->
-  <!--    <a href = "/meetings/<%#=meeting.id%>" >-->
-  <!--      <a <%#=meeting.first_participant%>>-->
-  <!--      <div>-->
-  <!--   
-  <!--      </div>-->
-  <!--    </a>-->
+     <table class="table">
+      <tr>
+        <th>
+          First participant Name
+        </th>
+        <th>
+          First participant Email
+        </th>
+    
+        <th>
+          Second participant Name
+        </th>
+        <th>
+          Second participant Email
+        </th>
+        <th>
+          Meeting Date
+        </th>
+    <% Meeting.where(["(first_participant = ? or second_participant = ?) and meeting_date = ?", current_user.id, current_user.id, Date.today ]).each do |meeting| %>
+   
+      </tr>
+          <tr>
+          <td>
+            <%= meeting.first_participant_name %>
+          </td>
+          <td>
+            <%= meeting.first_participant_email %>
+          </td>
       
-  <!--  </li>-->
-  <!--  <%# end %>-->
-  <!--</ul>-->
-
+          <td>
+            <%= meeting.second_participant_name %>
+          </td>
+           <td>
+            <%= meeting.second_participant_email %>
+          </td>
+          <td>
+            <%= meeting.meeting_date %>
+          </td>
+        </tr>
+     
+    <% end %>
+</table>
 <hr>
 
 <a href="/users">

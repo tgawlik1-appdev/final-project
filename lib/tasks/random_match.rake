@@ -1,6 +1,6 @@
-desc "experiment rake"
+desc "random matching"
 
-task :experiment => :environment do
+task :random => :environment do
     array = []
     User.pluck(:network_affiliation).uniq.each do |na|
       array << User.where(:network_affiliation => na).pluck(:id)

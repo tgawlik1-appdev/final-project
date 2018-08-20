@@ -1,0 +1,54 @@
+<h1>
+  My Meetings
+</h1>
+
+
+<hr>
+
+<table class="table">
+  <tr>
+    <th>
+      First participant Name
+    </th>
+    <th>
+      First participant Email
+    </th>
+
+    <th>
+      Second participant Name
+    </th>
+    <th>
+      Second participant Email
+    </th>
+    <th>
+      Meeting Date
+
+    </th>
+  </tr>
+
+  <% @meetings.each do |meeting| %>
+    <% if meeting.in?(current_user.meetings1) || meeting.in?(current_user.meetings2) %>
+  
+    <tr>
+      <td>
+        <%= meeting.first_participant_name %>
+      </td>
+      <td>
+        <%= meeting.first_participant_email %>
+      </td>
+  
+      <td>
+        <%= meeting.second_participant_name %>
+      </td>
+       <td>
+        <%= meeting.second_participant_email %>
+      </td>
+      <td>
+        <%= meeting.meeting_date %>
+      </td>
+  
+      
+    </tr>
+    <% end %>
+  <% end %>
+</table>

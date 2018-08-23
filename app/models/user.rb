@@ -30,7 +30,7 @@
 #  index_users_on_reset_password_token  (reset_password_token) UNIQUE
 #
 
-require "open-uri"
+#require "open-uri"
 
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
@@ -38,21 +38,21 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
  
-  after_validation :street_to_coords
+  # after_validation :street_to_coords
   
-  def street_to_coords
+  # def street_to_coords
     
-    @street_address = self.full_daytime_address
+  #   @street_address = self.full_daytime_address
     
-    url_safe_street_address = URI.encode(@street_address)
+  #   url_safe_street_address = URI.encode(@street_address)
     
-    raw_data = "http://maps.googleapis.com/maps/api/geocode/json?address=#{url_safe_street_address}"
-    parsed_data = JSON.parse(open(raw_data).read)
-    # binding.pry
-    self.assign_attributes(:latitude => parsed_data.dig("results", 0, "geometry", "location", "lat"))
+  #   raw_data = "http://maps.googleapis.com/maps/api/geocode/json?address=#{url_safe_street_address}"
+  #   parsed_data = JSON.parse(open(raw_data).read)
+  #   # binding.pry
+  #   self.assign_attributes(:latitude => parsed_data.dig("results", 0, "geometry", "location", "lat"))
     
-    self.assign_attributes(:longitude => parsed_data.dig("results", 0, "geometry", "location", "lng"))
-  end
+  #   self.assign_attributes(:longitude => parsed_data.dig("results", 0, "geometry", "location", "lng"))
+  # end
  
   has_many :meetings1, :class_name => "Meeting", :foreign_key => "first_participant"
   has_many :meetings2, :class_name => "Meeting", :foreign_key => "second_participant"

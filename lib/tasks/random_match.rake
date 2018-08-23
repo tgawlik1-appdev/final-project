@@ -3,7 +3,7 @@ desc "random matching"
 task :random => :environment do
     array = []
     User.pluck(:network_affiliation).uniq.each do |na|
-      array << User.where(:network_affiliation => na).pluck(:id)
+      array << User.where(:network_affiliation => na, :yes_participating => true).pluck(:id)
     end
     
     pairs = []

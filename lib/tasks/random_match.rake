@@ -5,11 +5,11 @@ task :random => :environment do
     User.pluck(:network_affiliation).uniq.each do |na|
       array << User.where(:network_affiliation => na).pluck(:id)
     end
-
+    
     pairs = []
     array.each do |n|
         
-        n.shuffle
+        n.shuffle!
         if n.size.odd?
             n.delete(n.sample)
         end

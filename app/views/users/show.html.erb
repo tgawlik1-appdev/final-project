@@ -11,20 +11,24 @@
 <dl>
   <dt>
     Participating?
-    <div>Please indicate before 10 AM Local time.</div>
+    <div>Please indicate before 10 AM Local time for today's meeting.</div>
   </dt>
   <dd>
-    <% if @user.yes_participating == nil || @user.yes_participating == false && @time.hour < 15 && @time.hour > 5  %>
+    <% if !!@user.yes_participating && @time.hour < 15  %>
       <a href="/update_user/<%=current_user.id%>" class="btn btn-primary">
           I'm in for Today! (<%= Date.today %>)
       </a>
-    <% elsif @user.yes_participating == nil || @user.yes_participating == false && @time.hour > 15 || @time.hour < 4  %>
-      <a >
-          Today's meeting is over! Please come back tomorrow (<%= Date.tomorrow %>)
+    <%elsif !@user.yes_participating && @time.hour < 15 %>
+      <a href="/update_user/<%=current_user.id%>" class="btn btn-primary">
+        You're Already Signed Up for Today! (<%= Date.today%>) (Unsign up)
+      </a>
+    <%elsif !@user.yes_participating && @time.hour > 15%>
+      <a href="/update_user/<%=current_user.id%>" class="btn btn-primary">
+        Today's Lunch is over, Sign up for Tomorrow! (<%= Date.tomorrow%>)
       </a>
     <%else%>
       <a href="/update_user/<%=current_user.id%>" class="btn btn-primary">
-        You're Already Signed Up for Today! (<%= Date.today%>) (Unsign up)
+        You're already signed up for tomorrow! (<%= Date.tomorrow%>) (Unsign Up)
       </a>
     <% end %>
   </dd>
